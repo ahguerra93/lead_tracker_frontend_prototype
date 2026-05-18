@@ -1,19 +1,17 @@
-import '../../domain/entities/message.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class MessageModel extends Message {
-  const MessageModel({
-    required super.id,
-    required super.content,
-    required super.sentAt,
-    required super.isFromMe,
-    required super.senderName,
-  });
+part 'conversation_detail_model.freezed.dart';
+part 'conversation_detail_model.g.dart';
 
-  factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
-    id: json['id'] as String,
-    content: json['content'] as String,
-    sentAt: DateTime.parse(json['sent_at'] as String),
-    isFromMe: json['is_from_me'] as bool,
-    senderName: json['sender_name'] as String,
-  );
+@freezed
+class ConversationDetailModel with _$ConversationDetailModel {
+  const factory ConversationDetailModel({
+    int? id,
+    @JsonKey(name: 'contact_id') required int contactId,
+    @JsonKey(name: 'phone_number_id') required String phoneNumberId,
+    @JsonKey(name: 'created_at') required DateTime createdAt,
+    @JsonKey(name: 'updated_at') required DateTime updatedAt,
+  }) = _ConversationDetailModel;
+
+  factory ConversationDetailModel.fromJson(Map<String, dynamic> json) => _$ConversationDetailModelFromJson(json);
 }
