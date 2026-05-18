@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../models/conversation_model.dart';
+import '../../../../shared/data/models/conversation_model.dart';
 
 abstract interface class ConversationsRemoteDataSource {
   Future<List<ConversationModel>> getConversations();

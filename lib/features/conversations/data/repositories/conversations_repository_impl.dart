@@ -8,5 +8,18 @@ class ConversationsRepositoryImpl implements ConversationsRepository {
   const ConversationsRepositoryImpl(this._dataSource);
 
   @override
-  Future<List<Conversation>> getConversations() => _dataSource.getConversations();
+  Future<List<Conversation>> getConversations() async {
+    final models = await _dataSource.getConversations();
+    return models
+        .map(
+          (model) => Conversation(
+            id: model.id,
+            contactId: model.contactId,
+            phoneNumberId: model.phoneNumberId,
+            createdAt: model.createdAt,
+            updatedAt: model.updatedAt,
+          ),
+        )
+        .toList();
+  }
 }

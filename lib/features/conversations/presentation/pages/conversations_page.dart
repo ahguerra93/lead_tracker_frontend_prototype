@@ -45,7 +45,7 @@ class _ConversationsView extends StatelessWidget {
               separatorBuilder: (_, __) => const Divider(height: 1),
               itemBuilder: (context, index) => ConversationTile(
                 conversation: conversations[index],
-                onTap: () => context.push(AppRoutes.conversationDetail, extra: conversations[index].id),
+                onTap: () => context.push('${AppRoutes.conversationDetail}/${conversations[index].id}'),
               ),
             ),
             ConversationsError(:final message) => _ErrorState(

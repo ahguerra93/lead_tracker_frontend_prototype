@@ -8,6 +8,14 @@ class ConversationDetailRepositoryImpl implements ConversationDetailRepository {
   const ConversationDetailRepositoryImpl(this._dataSource);
 
   @override
-  Future<ConversationDetail> getConversationDetail(String conversationId) =>
-      _dataSource.getConversationDetail(conversationId);
+  Future<ConversationDetail> getConversationDetail(String conversationId) async {
+    final model = await _dataSource.getConversationDetail(conversationId);
+    return ConversationDetail(
+      id: model.id,
+      contactId: model.contactId,
+      phoneNumberId: model.phoneNumberId,
+      createdAt: model.createdAt,
+      updatedAt: model.updatedAt,
+    );
+  }
 }

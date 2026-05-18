@@ -1,32 +1,20 @@
 import 'package:equatable/equatable.dart';
 
 class Conversation extends Equatable {
-  final String id;
-  final String title;
-  final String lastMessage;
-  final DateTime lastMessageAt;
-  final String participantName;
-  final String? participantAvatarUrl;
-  final int unreadCount;
+  final int? id;
+  final int contactId;
+  final String phoneNumberId;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
   const Conversation({
-    required this.id,
-    required this.title,
-    required this.lastMessage,
-    required this.lastMessageAt,
-    required this.participantName,
-    this.participantAvatarUrl,
-    this.unreadCount = 0,
+    this.id,
+    required this.contactId,
+    required this.phoneNumberId,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   @override
-  List<Object?> get props => [
-    id,
-    title,
-    lastMessage,
-    lastMessageAt,
-    participantName,
-    participantAvatarUrl,
-    unreadCount,
-  ];
+  List<Object?> get props => [id, contactId, phoneNumberId, createdAt, updatedAt];
 }

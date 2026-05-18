@@ -1,10 +1,42 @@
 # lead_tracker_frontend_prototype
 
-A new Flutter project.
+A Flutter frontend for lead tracking.
+
+## API Configuration
+
+The app reads the API base URL using this precedence:
+
+1. `--dart-define=BASE_URL=...`
+2. `.env` file value (`BASE_URL=...`)
+
+This allows convenient local development with `.env` while keeping CI/release
+overrides explicit through `--dart-define`.
+
+### Local Development
+
+The repository includes a default `.env` file. You can edit it as needed:
+
+```env
+BASE_URL=https://leadtrackerapi-production.up.railway.app/
+```
+
+Then run:
+
+```bash
+flutter run
+```
+
+### CI/Release Override
+
+Override the URL without changing `.env`:
+
+```bash
+flutter run --dart-define=BASE_URL=https://leadtrackerapi-production.up.railway.app/
+```
+
+If `BASE_URL` is missing from both sources, the app fails fast at startup.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
