@@ -6,6 +6,7 @@ import '../../../../common/app_dimens.dart';
 import '../../../../di/di.dart';
 import '../cubit/conversation_detail_cubit.dart';
 import '../cubit/conversation_detail_state.dart';
+import '../widgets/message_bubble.dart';
 
 class ConversationDetailPage extends StatelessWidget {
   final String conversationId;
@@ -38,16 +39,50 @@ class _ConversationDetailView extends StatelessWidget {
             ConversationDetailLoading() => const Center(child: CircularProgressIndicator()),
             ConversationDetailLoaded(:final detail) => Padding(
               padding: const EdgeInsets.all(AppDimens.spacingMd),
+              // padding: EdgeInsets.zero,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _DetailRow('Contact ID:', detail.contactId.toString()),
+                  // Contact Header
+                  Card(
+                    margin: EdgeInsets.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.all(AppDimens.spacingMd),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(detail.contact.name, style: AppTextStyles.titleMedium),
+                          const SizedBox(height: AppDimens.spacingSm),
+                          Text(
+                            detail.contact.waId,
+                            style: AppTextStyles.bodySmall.copyWith(color: context.colors.textSecondary),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: AppDimens.spacingMd),
+
+                  // Messages Section
+                  Text('Last 5 Messages', style: AppTextStyles.titleSmall),
                   const SizedBox(height: AppDimens.spacingSm),
-                  _DetailRow('Phone Number ID:', detail.phoneNumberId),
-                  const SizedBox(height: AppDimens.spacingSm),
-                  _DetailRow('Created:', _formatDateTime(detail.createdAt)),
-                  const SizedBox(height: AppDimens.spacingSm),
-                  _DetailRow('Updated:', _formatDateTime(detail.updatedAt)),
+
+                  // Messages List (up to 5 most recent)
+                  Expanded(
+                    child: detail.messages.isEmpty
+                        ? const Center(child: Text('No messages yet'))
+                        : ListView.builder(
+                            itemCount: detail.messages.take(5).length,
+                            padding: EdgeInsets.zero,
+                            itemBuilder: (context, index) {
+                              final message = detail.messages[index];
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(vertical: AppDimens.spacingSm),
+                                child: MessageBubble(message: message),
+                              );
+                            },
+                          ),
+                  ),
                 ],
               ),
             ),
@@ -57,13 +92,13 @@ class _ConversationDetailView extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.error_outline, size: 48, color: AppColors.error),
+                    Icon(Icons.error_outline, size: 48, color: Theme.of(context).colorScheme.error),
                     const SizedBox(height: AppDimens.spacingMd),
                     Text('Failed to load conversation', style: AppTextStyles.titleMedium),
                     const SizedBox(height: AppDimens.spacingSm),
                     Text(
                       message,
-                      style: AppTextStyles.bodySmall.copyWith(color: AppColors.textSecondary),
+                      style: AppTextStyles.bodySmall.copyWith(color: context.colors.textSecondary),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -74,31 +109,6 @@ class _ConversationDetailView extends StatelessWidget {
           },
         );
       },
-    );
-  }
-
-  String _formatDateTime(DateTime dateTime) {
-    return '${dateTime.year}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')} '
-        '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
-  }
-}
-
-class _DetailRow extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const _DetailRow(this.label, this.value);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(label, style: AppTextStyles.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
-        const SizedBox(width: AppDimens.spacingSm),
-        Expanded(
-          child: Text(value, style: AppTextStyles.bodyMedium, overflow: TextOverflow.ellipsis),
-        ),
-      ],
     );
   }
 }

@@ -58,8 +58,8 @@ class _ConversationsView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: AppColors.primary,
-        child: const Icon(Icons.edit, color: AppColors.textOnPrimary),
+        backgroundColor: context.colors.primary,
+        child: Icon(Icons.edit, color: context.colors.textOnPrimary),
       ),
     );
   }
@@ -72,11 +72,14 @@ class _EmptyState extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.chat_bubble_outline, size: 64, color: AppColors.textSecondary),
+          Icon(Icons.chat_bubble_outline, size: 64, color: context.colors.textSecondary),
           const SizedBox(height: AppDimens.spacingMd),
-          Text('No conversations yet', style: AppTextStyles.titleMedium.copyWith(color: AppColors.textSecondary)),
+          Text('No conversations yet', style: AppTextStyles.titleMedium.copyWith(color: context.colors.textSecondary)),
           const SizedBox(height: AppDimens.spacingSm),
-          Text('Start a new conversation', style: AppTextStyles.bodyMedium.copyWith(color: AppColors.textSecondary)),
+          Text(
+            'Start a new conversation',
+            style: AppTextStyles.bodyMedium.copyWith(color: context.colors.textSecondary),
+          ),
         ],
       ),
     );
@@ -97,13 +100,13 @@ class _ErrorState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: AppColors.error),
+            Icon(Icons.error_outline, size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: AppDimens.spacingMd),
             Text('Something went wrong', style: AppTextStyles.titleMedium),
             const SizedBox(height: AppDimens.spacingSm),
             Text(
               message,
-              style: AppTextStyles.bodySmall.copyWith(color: AppColors.textSecondary),
+              style: AppTextStyles.bodySmall.copyWith(color: context.colors.textSecondary),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppDimens.spacingLg),

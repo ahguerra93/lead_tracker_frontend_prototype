@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'conversation_detail_model.dart';
+part of 'conversation_detail.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,70 +15,54 @@ final _privateConstructorUsedError = UnsupportedError(
   'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
 );
 
-ConversationDetailModel _$ConversationDetailModelFromJson(
-  Map<String, dynamic> json,
-) {
-  return _ConversationDetailModel.fromJson(json);
-}
-
 /// @nodoc
-mixin _$ConversationDetailModel {
+mixin _$ConversationDetail {
   int? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'contact_id')
   int get contactId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'phone_number_id')
   String get phoneNumberId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updated_at')
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  ContactModel get contact => throw _privateConstructorUsedError;
-  List<MessageModel> get messages => throw _privateConstructorUsedError;
+  Contact get contact => throw _privateConstructorUsedError;
+  List<Message> get messages => throw _privateConstructorUsedError;
 
-  /// Serializes this ConversationDetailModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ConversationDetailModel
+  /// Create a copy of ConversationDetail
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ConversationDetailModelCopyWith<ConversationDetailModel> get copyWith =>
+  $ConversationDetailCopyWith<ConversationDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConversationDetailModelCopyWith<$Res> {
-  factory $ConversationDetailModelCopyWith(
-    ConversationDetailModel value,
-    $Res Function(ConversationDetailModel) then,
-  ) = _$ConversationDetailModelCopyWithImpl<$Res, ConversationDetailModel>;
+abstract class $ConversationDetailCopyWith<$Res> {
+  factory $ConversationDetailCopyWith(
+    ConversationDetail value,
+    $Res Function(ConversationDetail) then,
+  ) = _$ConversationDetailCopyWithImpl<$Res, ConversationDetail>;
   @useResult
   $Res call({
     int? id,
-    @JsonKey(name: 'contact_id') int contactId,
-    @JsonKey(name: 'phone_number_id') String phoneNumberId,
-    @JsonKey(name: 'created_at') DateTime createdAt,
-    @JsonKey(name: 'updated_at') DateTime updatedAt,
-    ContactModel contact,
-    List<MessageModel> messages,
+    int contactId,
+    String phoneNumberId,
+    DateTime createdAt,
+    DateTime updatedAt,
+    Contact contact,
+    List<Message> messages,
   });
 
-  $ContactModelCopyWith<$Res> get contact;
+  $ContactCopyWith<$Res> get contact;
 }
 
 /// @nodoc
-class _$ConversationDetailModelCopyWithImpl<
-  $Res,
-  $Val extends ConversationDetailModel
->
-    implements $ConversationDetailModelCopyWith<$Res> {
-  _$ConversationDetailModelCopyWithImpl(this._value, this._then);
+class _$ConversationDetailCopyWithImpl<$Res, $Val extends ConversationDetail>
+    implements $ConversationDetailCopyWith<$Res> {
+  _$ConversationDetailCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ConversationDetailModel
+  /// Create a copy of ConversationDetail
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -116,64 +100,60 @@ class _$ConversationDetailModelCopyWithImpl<
             contact: null == contact
                 ? _value.contact
                 : contact // ignore: cast_nullable_to_non_nullable
-                      as ContactModel,
+                      as Contact,
             messages: null == messages
                 ? _value.messages
                 : messages // ignore: cast_nullable_to_non_nullable
-                      as List<MessageModel>,
+                      as List<Message>,
           )
           as $Val,
     );
   }
 
-  /// Create a copy of ConversationDetailModel
+  /// Create a copy of ConversationDetail
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ContactModelCopyWith<$Res> get contact {
-    return $ContactModelCopyWith<$Res>(_value.contact, (value) {
+  $ContactCopyWith<$Res> get contact {
+    return $ContactCopyWith<$Res>(_value.contact, (value) {
       return _then(_value.copyWith(contact: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ConversationDetailModelImplCopyWith<$Res>
-    implements $ConversationDetailModelCopyWith<$Res> {
-  factory _$$ConversationDetailModelImplCopyWith(
-    _$ConversationDetailModelImpl value,
-    $Res Function(_$ConversationDetailModelImpl) then,
-  ) = __$$ConversationDetailModelImplCopyWithImpl<$Res>;
+abstract class _$$ConversationDetailImplCopyWith<$Res>
+    implements $ConversationDetailCopyWith<$Res> {
+  factory _$$ConversationDetailImplCopyWith(
+    _$ConversationDetailImpl value,
+    $Res Function(_$ConversationDetailImpl) then,
+  ) = __$$ConversationDetailImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({
     int? id,
-    @JsonKey(name: 'contact_id') int contactId,
-    @JsonKey(name: 'phone_number_id') String phoneNumberId,
-    @JsonKey(name: 'created_at') DateTime createdAt,
-    @JsonKey(name: 'updated_at') DateTime updatedAt,
-    ContactModel contact,
-    List<MessageModel> messages,
+    int contactId,
+    String phoneNumberId,
+    DateTime createdAt,
+    DateTime updatedAt,
+    Contact contact,
+    List<Message> messages,
   });
 
   @override
-  $ContactModelCopyWith<$Res> get contact;
+  $ContactCopyWith<$Res> get contact;
 }
 
 /// @nodoc
-class __$$ConversationDetailModelImplCopyWithImpl<$Res>
-    extends
-        _$ConversationDetailModelCopyWithImpl<
-          $Res,
-          _$ConversationDetailModelImpl
-        >
-    implements _$$ConversationDetailModelImplCopyWith<$Res> {
-  __$$ConversationDetailModelImplCopyWithImpl(
-    _$ConversationDetailModelImpl _value,
-    $Res Function(_$ConversationDetailModelImpl) _then,
+class __$$ConversationDetailImplCopyWithImpl<$Res>
+    extends _$ConversationDetailCopyWithImpl<$Res, _$ConversationDetailImpl>
+    implements _$$ConversationDetailImplCopyWith<$Res> {
+  __$$ConversationDetailImplCopyWithImpl(
+    _$ConversationDetailImpl _value,
+    $Res Function(_$ConversationDetailImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of ConversationDetailModel
+  /// Create a copy of ConversationDetail
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -187,7 +167,7 @@ class __$$ConversationDetailModelImplCopyWithImpl<$Res>
     Object? messages = null,
   }) {
     return _then(
-      _$ConversationDetailModelImpl(
+      _$ConversationDetailImpl(
         id: freezed == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
@@ -211,51 +191,44 @@ class __$$ConversationDetailModelImplCopyWithImpl<$Res>
         contact: null == contact
             ? _value.contact
             : contact // ignore: cast_nullable_to_non_nullable
-                  as ContactModel,
+                  as Contact,
         messages: null == messages
             ? _value._messages
             : messages // ignore: cast_nullable_to_non_nullable
-                  as List<MessageModel>,
+                  as List<Message>,
       ),
     );
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$ConversationDetailModelImpl implements _ConversationDetailModel {
-  const _$ConversationDetailModelImpl({
-    this.id,
-    @JsonKey(name: 'contact_id') required this.contactId,
-    @JsonKey(name: 'phone_number_id') required this.phoneNumberId,
-    @JsonKey(name: 'created_at') required this.createdAt,
-    @JsonKey(name: 'updated_at') required this.updatedAt,
-    required this.contact,
-    required final List<MessageModel> messages,
-  }) : _messages = messages;
 
-  factory _$ConversationDetailModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConversationDetailModelImplFromJson(json);
+class _$ConversationDetailImpl implements _ConversationDetail {
+  const _$ConversationDetailImpl({
+    this.id,
+    required this.contactId,
+    required this.phoneNumberId,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.contact,
+    required final List<Message> messages,
+  }) : _messages = messages;
 
   @override
   final int? id;
   @override
-  @JsonKey(name: 'contact_id')
   final int contactId;
   @override
-  @JsonKey(name: 'phone_number_id')
   final String phoneNumberId;
   @override
-  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
-  @JsonKey(name: 'updated_at')
   final DateTime updatedAt;
   @override
-  final ContactModel contact;
-  final List<MessageModel> _messages;
+  final Contact contact;
+  final List<Message> _messages;
   @override
-  List<MessageModel> get messages {
+  List<Message> get messages {
     if (_messages is EqualUnmodifiableListView) return _messages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_messages);
@@ -263,14 +236,14 @@ class _$ConversationDetailModelImpl implements _ConversationDetailModel {
 
   @override
   String toString() {
-    return 'ConversationDetailModel(id: $id, contactId: $contactId, phoneNumberId: $phoneNumberId, createdAt: $createdAt, updatedAt: $updatedAt, contact: $contact, messages: $messages)';
+    return 'ConversationDetail(id: $id, contactId: $contactId, phoneNumberId: $phoneNumberId, createdAt: $createdAt, updatedAt: $updatedAt, contact: $contact, messages: $messages)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConversationDetailModelImpl &&
+            other is _$ConversationDetailImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.contactId, contactId) ||
                 other.contactId == contactId) &&
@@ -284,7 +257,6 @@ class _$ConversationDetailModelImpl implements _ConversationDetailModel {
             const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
     runtimeType,
@@ -297,60 +269,48 @@ class _$ConversationDetailModelImpl implements _ConversationDetailModel {
     const DeepCollectionEquality().hash(_messages),
   );
 
-  /// Create a copy of ConversationDetailModel
+  /// Create a copy of ConversationDetail
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConversationDetailModelImplCopyWith<_$ConversationDetailModelImpl>
-  get copyWith =>
-      __$$ConversationDetailModelImplCopyWithImpl<
-        _$ConversationDetailModelImpl
-      >(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ConversationDetailModelImplToJson(this);
-  }
+  _$$ConversationDetailImplCopyWith<_$ConversationDetailImpl> get copyWith =>
+      __$$ConversationDetailImplCopyWithImpl<_$ConversationDetailImpl>(
+        this,
+        _$identity,
+      );
 }
 
-abstract class _ConversationDetailModel implements ConversationDetailModel {
-  const factory _ConversationDetailModel({
+abstract class _ConversationDetail implements ConversationDetail {
+  const factory _ConversationDetail({
     final int? id,
-    @JsonKey(name: 'contact_id') required final int contactId,
-    @JsonKey(name: 'phone_number_id') required final String phoneNumberId,
-    @JsonKey(name: 'created_at') required final DateTime createdAt,
-    @JsonKey(name: 'updated_at') required final DateTime updatedAt,
-    required final ContactModel contact,
-    required final List<MessageModel> messages,
-  }) = _$ConversationDetailModelImpl;
-
-  factory _ConversationDetailModel.fromJson(Map<String, dynamic> json) =
-      _$ConversationDetailModelImpl.fromJson;
+    required final int contactId,
+    required final String phoneNumberId,
+    required final DateTime createdAt,
+    required final DateTime updatedAt,
+    required final Contact contact,
+    required final List<Message> messages,
+  }) = _$ConversationDetailImpl;
 
   @override
   int? get id;
   @override
-  @JsonKey(name: 'contact_id')
   int get contactId;
   @override
-  @JsonKey(name: 'phone_number_id')
   String get phoneNumberId;
   @override
-  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
-  @JsonKey(name: 'updated_at')
   DateTime get updatedAt;
   @override
-  ContactModel get contact;
+  Contact get contact;
   @override
-  List<MessageModel> get messages;
+  List<Message> get messages;
 
-  /// Create a copy of ConversationDetailModel
+  /// Create a copy of ConversationDetail
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConversationDetailModelImplCopyWith<_$ConversationDetailModelImpl>
-  get copyWith => throw _privateConstructorUsedError;
+  _$$ConversationDetailImplCopyWith<_$ConversationDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

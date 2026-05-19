@@ -30,6 +30,9 @@ mixin _$ConversationModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime get updatedAt => throw _privateConstructorUsedError;
+  ContactModel get contact => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_message')
+  MessageModel get lastMessage => throw _privateConstructorUsedError;
 
   /// Serializes this ConversationModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +57,12 @@ abstract class $ConversationModelCopyWith<$Res> {
     @JsonKey(name: 'phone_number_id') String phoneNumberId,
     @JsonKey(name: 'created_at') DateTime createdAt,
     @JsonKey(name: 'updated_at') DateTime updatedAt,
+    ContactModel contact,
+    @JsonKey(name: 'last_message') MessageModel lastMessage,
   });
+
+  $ContactModelCopyWith<$Res> get contact;
+  $MessageModelCopyWith<$Res> get lastMessage;
 }
 
 /// @nodoc
@@ -77,6 +85,8 @@ class _$ConversationModelCopyWithImpl<$Res, $Val extends ConversationModel>
     Object? phoneNumberId = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? contact = null,
+    Object? lastMessage = null,
   }) {
     return _then(
       _value.copyWith(
@@ -100,9 +110,37 @@ class _$ConversationModelCopyWithImpl<$Res, $Val extends ConversationModel>
                 ? _value.updatedAt
                 : updatedAt // ignore: cast_nullable_to_non_nullable
                       as DateTime,
+            contact: null == contact
+                ? _value.contact
+                : contact // ignore: cast_nullable_to_non_nullable
+                      as ContactModel,
+            lastMessage: null == lastMessage
+                ? _value.lastMessage
+                : lastMessage // ignore: cast_nullable_to_non_nullable
+                      as MessageModel,
           )
           as $Val,
     );
+  }
+
+  /// Create a copy of ConversationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ContactModelCopyWith<$Res> get contact {
+    return $ContactModelCopyWith<$Res>(_value.contact, (value) {
+      return _then(_value.copyWith(contact: value) as $Val);
+    });
+  }
+
+  /// Create a copy of ConversationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $MessageModelCopyWith<$Res> get lastMessage {
+    return $MessageModelCopyWith<$Res>(_value.lastMessage, (value) {
+      return _then(_value.copyWith(lastMessage: value) as $Val);
+    });
   }
 }
 
@@ -121,7 +159,14 @@ abstract class _$$ConversationModelImplCopyWith<$Res>
     @JsonKey(name: 'phone_number_id') String phoneNumberId,
     @JsonKey(name: 'created_at') DateTime createdAt,
     @JsonKey(name: 'updated_at') DateTime updatedAt,
+    ContactModel contact,
+    @JsonKey(name: 'last_message') MessageModel lastMessage,
   });
+
+  @override
+  $ContactModelCopyWith<$Res> get contact;
+  @override
+  $MessageModelCopyWith<$Res> get lastMessage;
 }
 
 /// @nodoc
@@ -143,6 +188,8 @@ class __$$ConversationModelImplCopyWithImpl<$Res>
     Object? phoneNumberId = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? contact = null,
+    Object? lastMessage = null,
   }) {
     return _then(
       _$ConversationModelImpl(
@@ -166,6 +213,14 @@ class __$$ConversationModelImplCopyWithImpl<$Res>
             ? _value.updatedAt
             : updatedAt // ignore: cast_nullable_to_non_nullable
                   as DateTime,
+        contact: null == contact
+            ? _value.contact
+            : contact // ignore: cast_nullable_to_non_nullable
+                  as ContactModel,
+        lastMessage: null == lastMessage
+            ? _value.lastMessage
+            : lastMessage // ignore: cast_nullable_to_non_nullable
+                  as MessageModel,
       ),
     );
   }
@@ -180,6 +235,8 @@ class _$ConversationModelImpl implements _ConversationModel {
     @JsonKey(name: 'phone_number_id') required this.phoneNumberId,
     @JsonKey(name: 'created_at') required this.createdAt,
     @JsonKey(name: 'updated_at') required this.updatedAt,
+    required this.contact,
+    @JsonKey(name: 'last_message') required this.lastMessage,
   });
 
   factory _$ConversationModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -199,10 +256,15 @@ class _$ConversationModelImpl implements _ConversationModel {
   @override
   @JsonKey(name: 'updated_at')
   final DateTime updatedAt;
+  @override
+  final ContactModel contact;
+  @override
+  @JsonKey(name: 'last_message')
+  final MessageModel lastMessage;
 
   @override
   String toString() {
-    return 'ConversationModel(id: $id, contactId: $contactId, phoneNumberId: $phoneNumberId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ConversationModel(id: $id, contactId: $contactId, phoneNumberId: $phoneNumberId, createdAt: $createdAt, updatedAt: $updatedAt, contact: $contact, lastMessage: $lastMessage)';
   }
 
   @override
@@ -218,7 +280,10 @@ class _$ConversationModelImpl implements _ConversationModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.contact, contact) || other.contact == contact) &&
+            (identical(other.lastMessage, lastMessage) ||
+                other.lastMessage == lastMessage));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -230,6 +295,8 @@ class _$ConversationModelImpl implements _ConversationModel {
     phoneNumberId,
     createdAt,
     updatedAt,
+    contact,
+    lastMessage,
   );
 
   /// Create a copy of ConversationModel
@@ -256,6 +323,8 @@ abstract class _ConversationModel implements ConversationModel {
     @JsonKey(name: 'phone_number_id') required final String phoneNumberId,
     @JsonKey(name: 'created_at') required final DateTime createdAt,
     @JsonKey(name: 'updated_at') required final DateTime updatedAt,
+    required final ContactModel contact,
+    @JsonKey(name: 'last_message') required final MessageModel lastMessage,
   }) = _$ConversationModelImpl;
 
   factory _ConversationModel.fromJson(Map<String, dynamic> json) =
@@ -275,6 +344,11 @@ abstract class _ConversationModel implements ConversationModel {
   @override
   @JsonKey(name: 'updated_at')
   DateTime get updatedAt;
+  @override
+  ContactModel get contact;
+  @override
+  @JsonKey(name: 'last_message')
+  MessageModel get lastMessage;
 
   /// Create a copy of ConversationModel
   /// with the given fields replaced by the non-null parameter values.

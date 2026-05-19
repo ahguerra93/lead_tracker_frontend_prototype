@@ -11,43 +11,44 @@ class MessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
     return Align(
-      alignment: message.isFromMe ? Alignment.centerRight : Alignment.centerLeft,
+      alignment: message.isOutgoing ? Alignment.centerRight : Alignment.centerLeft,
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.72),
         child: Container(
           margin: EdgeInsets.only(
             top: AppDimens.spacingXs,
             bottom: AppDimens.spacingXs,
-            left: message.isFromMe ? AppDimens.spacingXxl : AppDimens.spacingMd,
-            right: message.isFromMe ? AppDimens.spacingMd : AppDimens.spacingXxl,
+            // left: message.isOutgoing ? AppDimens.spacingXxl : AppDimens.spacingMd,
+            // right: message.isOutgoing ? AppDimens.spacingMd : AppDimens.spacingXxl,
           ),
           padding: const EdgeInsets.symmetric(horizontal: AppDimens.spacingMd, vertical: AppDimens.spacingSm + 2),
           decoration: BoxDecoration(
-            color: message.isFromMe ? AppColors.primary : AppColors.surfaceSoft,
+            color: message.isOutgoing ? colors.primary : colors.surfaceSoft,
             borderRadius: BorderRadius.only(
               topLeft: const Radius.circular(AppDimens.radiusLg),
               topRight: const Radius.circular(AppDimens.radiusLg),
-              bottomLeft: Radius.circular(message.isFromMe ? AppDimens.radiusLg : AppDimens.radiusXs),
-              bottomRight: Radius.circular(message.isFromMe ? AppDimens.radiusXs : AppDimens.radiusLg),
+              bottomLeft: Radius.circular(message.isOutgoing ? AppDimens.radiusLg : AppDimens.radiusXs),
+              bottomRight: Radius.circular(message.isOutgoing ? AppDimens.radiusXs : AppDimens.radiusLg),
             ),
-            border: message.isFromMe ? null : Border.all(color: AppColors.border),
+            border: message.isOutgoing ? null : Border.all(color: colors.border),
           ),
           child: Column(
-            crossAxisAlignment: message.isFromMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            crossAxisAlignment: message.isOutgoing ? CrossAxisAlignment.end : CrossAxisAlignment.start,
             children: [
               Text(
-                message.content,
+                message.textContent ?? '',
                 style: AppTextStyles.bodyMedium.copyWith(
-                  color: message.isFromMe ? AppColors.textOnPrimary : AppColors.textPrimary,
+                  color: message.isOutgoing ? colors.textOnPrimary : colors.textPrimary,
                 ),
               ),
               const SizedBox(height: AppDimens.spacingXs),
               Text(
-                _formatTime(message.sentAt),
+                _formatTime(message.messageTimestamp),
                 style: AppTextStyles.labelSmall.copyWith(
                   fontSize: 10,
-                  color: message.isFromMe ? AppColors.textOnPrimary.withValues(alpha: 0.7) : AppColors.textSecondary,
+                  color: message.isOutgoing ? colors.textOnPrimary.withValues(alpha: 0.7) : colors.textSecondary,
                 ),
               ),
             ],

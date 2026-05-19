@@ -14,6 +14,10 @@ _$ConversationDetailModelImpl _$$ConversationDetailModelImplFromJson(
   phoneNumberId: json['phone_number_id'] as String,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
+  contact: ContactModel.fromJson(json['contact'] as Map<String, dynamic>),
+  messages: (json['messages'] as List<dynamic>)
+      .map((e) => MessageModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$$ConversationDetailModelImplToJson(
@@ -24,4 +28,6 @@ Map<String, dynamic> _$$ConversationDetailModelImplToJson(
   'phone_number_id': instance.phoneNumberId,
   'created_at': instance.createdAt.toIso8601String(),
   'updated_at': instance.updatedAt.toIso8601String(),
+  'contact': instance.contact,
+  'messages': instance.messages,
 };
