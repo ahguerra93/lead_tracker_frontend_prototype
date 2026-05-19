@@ -12,6 +12,7 @@ class ConversationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -20,10 +21,10 @@ class ConversationTile extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: AppDimens.avatarSm / 2,
-              backgroundColor: AppColors.primaryContainer,
+              backgroundColor: colors.primaryContainer,
               child: Text(
-                conversation.contactId.toString().substring(0, 1),
-                style: AppTextStyles.titleSmall.copyWith(color: AppColors.primary),
+                conversation.contact.name.substring(0, 1).toUpperCase(),
+                style: AppTextStyles.titleSmall.copyWith(color: colors.primary),
               ),
             ),
             const SizedBox(width: AppDimens.spacingMd),
@@ -36,7 +37,7 @@ class ConversationTile extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          'Contact ${conversation.contactId}',
+                          conversation.contact.name,
                           style: AppTextStyles.titleSmall,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -44,14 +45,21 @@ class ConversationTile extends StatelessWidget {
                       const SizedBox(width: AppDimens.spacingSm),
                       Text(
                         _formatDateTime(conversation.updatedAt),
-                        style: AppTextStyles.labelSmall.copyWith(color: AppColors.textSecondary),
+                        style: AppTextStyles.labelSmall.copyWith(color: colors.textSecondary),
                       ),
                     ],
                   ),
                   const SizedBox(height: AppDimens.spacingXs),
                   Text(
-                    conversation.phoneNumberId,
-                    style: AppTextStyles.bodySmall.copyWith(color: AppColors.textSecondary),
+                    conversation.contact.waId,
+                    style: AppTextStyles.bodySmall.copyWith(color: colors.textSecondary),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: AppDimens.spacingXs),
+                  Text(
+                    conversation.lastMessage.textContent,
+                    style: AppTextStyles.bodySmall,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),

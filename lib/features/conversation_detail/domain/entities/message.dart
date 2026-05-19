@@ -1,20 +1,19 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Message extends Equatable {
-  final String id;
-  final String content;
-  final DateTime sentAt;
-  final bool isFromMe;
-  final String senderName;
+part 'message.freezed.dart';
 
-  const Message({
-    required this.id,
-    required this.content,
-    required this.sentAt,
-    required this.isFromMe,
-    required this.senderName,
-  });
+@freezed
+class Message with _$Message {
+  const Message._();
 
-  @override
-  List<Object?> get props => [id, content, sentAt, isFromMe, senderName];
+  const factory Message({
+    required int id,
+    required String direction,
+    required String messageType,
+    required String textContent,
+    required DateTime messageTimestamp,
+  }) = _Message;
+
+  bool get isIncoming => direction == 'incoming';
+  bool get isOutgoing => direction == 'outgoing';
 }

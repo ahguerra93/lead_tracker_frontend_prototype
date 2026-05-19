@@ -1,20 +1,18 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../conversations/domain/entities/contact.dart';
+import 'message.dart';
 
-class ConversationDetail extends Equatable {
-  final int? id;
-  final int contactId;
-  final String phoneNumberId;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+part 'conversation_detail.freezed.dart';
 
-  const ConversationDetail({
-    this.id,
-    required this.contactId,
-    required this.phoneNumberId,
-    required this.createdAt,
-    required this.updatedAt,
-  });
-
-  @override
-  List<Object?> get props => [id, contactId, phoneNumberId, createdAt, updatedAt];
+@freezed
+class ConversationDetail with _$ConversationDetail {
+  const factory ConversationDetail({
+    int? id,
+    required int contactId,
+    required String phoneNumberId,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    required Contact contact,
+    required List<Message> messages,
+  }) = _ConversationDetail;
 }
