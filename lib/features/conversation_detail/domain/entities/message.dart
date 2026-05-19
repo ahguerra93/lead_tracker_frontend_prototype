@@ -10,7 +10,7 @@ class Message with _$Message {
     required int id,
     required String direction,
     required String messageType,
-    required String textContent,
+    required String? textContent,
     required DateTime messageTimestamp,
   }) = _Message;
 

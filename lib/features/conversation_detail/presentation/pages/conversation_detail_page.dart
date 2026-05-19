@@ -39,11 +39,13 @@ class _ConversationDetailView extends StatelessWidget {
             ConversationDetailLoading() => const Center(child: CircularProgressIndicator()),
             ConversationDetailLoaded(:final detail) => Padding(
               padding: const EdgeInsets.all(AppDimens.spacingMd),
+              // padding: EdgeInsets.zero,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Contact Header
                   Card(
+                    margin: EdgeInsets.zero,
                     child: Padding(
                       padding: const EdgeInsets.all(AppDimens.spacingMd),
                       child: Column(
@@ -71,6 +73,7 @@ class _ConversationDetailView extends StatelessWidget {
                         ? const Center(child: Text('No messages yet'))
                         : ListView.builder(
                             itemCount: detail.messages.take(5).length,
+                            padding: EdgeInsets.zero,
                             itemBuilder: (context, index) {
                               final message = detail.messages[index];
                               return Padding(

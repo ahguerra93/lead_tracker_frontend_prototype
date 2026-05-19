@@ -20,8 +20,8 @@ class MessageBubble extends StatelessWidget {
           margin: EdgeInsets.only(
             top: AppDimens.spacingXs,
             bottom: AppDimens.spacingXs,
-            left: message.isOutgoing ? AppDimens.spacingXxl : AppDimens.spacingMd,
-            right: message.isOutgoing ? AppDimens.spacingMd : AppDimens.spacingXxl,
+            // left: message.isOutgoing ? AppDimens.spacingXxl : AppDimens.spacingMd,
+            // right: message.isOutgoing ? AppDimens.spacingMd : AppDimens.spacingXxl,
           ),
           padding: const EdgeInsets.symmetric(horizontal: AppDimens.spacingMd, vertical: AppDimens.spacingSm + 2),
           decoration: BoxDecoration(
@@ -38,7 +38,7 @@ class MessageBubble extends StatelessWidget {
             crossAxisAlignment: message.isOutgoing ? CrossAxisAlignment.end : CrossAxisAlignment.start,
             children: [
               Text(
-                message.textContent,
+                message.textContent ?? '',
                 style: AppTextStyles.bodyMedium.copyWith(
                   color: message.isOutgoing ? colors.textOnPrimary : colors.textPrimary,
                 ),

@@ -20,7 +20,7 @@ mixin _$Message {
   int get id => throw _privateConstructorUsedError;
   String get direction => throw _privateConstructorUsedError;
   String get messageType => throw _privateConstructorUsedError;
-  String get textContent => throw _privateConstructorUsedError;
+  String? get textContent => throw _privateConstructorUsedError;
   DateTime get messageTimestamp => throw _privateConstructorUsedError;
 
   /// Create a copy of Message
@@ -38,7 +38,7 @@ abstract class $MessageCopyWith<$Res> {
     int id,
     String direction,
     String messageType,
-    String textContent,
+    String? textContent,
     DateTime messageTimestamp,
   });
 }
@@ -61,7 +61,7 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
     Object? id = null,
     Object? direction = null,
     Object? messageType = null,
-    Object? textContent = null,
+    Object? textContent = freezed,
     Object? messageTimestamp = null,
   }) {
     return _then(
@@ -78,10 +78,10 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
                 ? _value.messageType
                 : messageType // ignore: cast_nullable_to_non_nullable
                       as String,
-            textContent: null == textContent
+            textContent: freezed == textContent
                 ? _value.textContent
                 : textContent // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             messageTimestamp: null == messageTimestamp
                 ? _value.messageTimestamp
                 : messageTimestamp // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ abstract class _$$MessageImplCopyWith<$Res> implements $MessageCopyWith<$Res> {
     int id,
     String direction,
     String messageType,
-    String textContent,
+    String? textContent,
     DateTime messageTimestamp,
   });
 }
@@ -126,7 +126,7 @@ class __$$MessageImplCopyWithImpl<$Res>
     Object? id = null,
     Object? direction = null,
     Object? messageType = null,
-    Object? textContent = null,
+    Object? textContent = freezed,
     Object? messageTimestamp = null,
   }) {
     return _then(
@@ -143,10 +143,10 @@ class __$$MessageImplCopyWithImpl<$Res>
             ? _value.messageType
             : messageType // ignore: cast_nullable_to_non_nullable
                   as String,
-        textContent: null == textContent
+        textContent: freezed == textContent
             ? _value.textContent
             : textContent // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         messageTimestamp: null == messageTimestamp
             ? _value.messageTimestamp
             : messageTimestamp // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ class _$MessageImpl extends _Message {
   @override
   final String messageType;
   @override
-  final String textContent;
+  final String? textContent;
   @override
   final DateTime messageTimestamp;
 
@@ -223,7 +223,7 @@ abstract class _Message extends Message {
     required final int id,
     required final String direction,
     required final String messageType,
-    required final String textContent,
+    required final String? textContent,
     required final DateTime messageTimestamp,
   }) = _$MessageImpl;
   const _Message._() : super._();
@@ -235,7 +235,7 @@ abstract class _Message extends Message {
   @override
   String get messageType;
   @override
-  String get textContent;
+  String? get textContent;
   @override
   DateTime get messageTimestamp;
 

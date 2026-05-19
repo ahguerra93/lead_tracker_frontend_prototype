@@ -11,7 +11,7 @@ _$MessageModelImpl _$$MessageModelImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       direction: json['direction'] as String,
       messageType: json['message_type'] as String,
-      textContent: json['text_content'] as String,
+      textContent: json['text_content'] as String?,
       messageTimestamp: DateTime.parse(json['message_timestamp'] as String),
     );
 

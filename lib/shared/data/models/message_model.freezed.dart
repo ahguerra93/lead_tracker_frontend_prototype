@@ -26,7 +26,7 @@ mixin _$MessageModel {
   @JsonKey(name: 'message_type')
   String get messageType => throw _privateConstructorUsedError;
   @JsonKey(name: 'text_content')
-  String get textContent => throw _privateConstructorUsedError;
+  String? get textContent => throw _privateConstructorUsedError;
   @JsonKey(name: 'message_timestamp')
   DateTime get messageTimestamp => throw _privateConstructorUsedError;
 
@@ -51,7 +51,7 @@ abstract class $MessageModelCopyWith<$Res> {
     int id,
     String direction,
     @JsonKey(name: 'message_type') String messageType,
-    @JsonKey(name: 'text_content') String textContent,
+    @JsonKey(name: 'text_content') String? textContent,
     @JsonKey(name: 'message_timestamp') DateTime messageTimestamp,
   });
 }
@@ -74,7 +74,7 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
     Object? id = null,
     Object? direction = null,
     Object? messageType = null,
-    Object? textContent = null,
+    Object? textContent = freezed,
     Object? messageTimestamp = null,
   }) {
     return _then(
@@ -91,10 +91,10 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
                 ? _value.messageType
                 : messageType // ignore: cast_nullable_to_non_nullable
                       as String,
-            textContent: null == textContent
+            textContent: freezed == textContent
                 ? _value.textContent
                 : textContent // ignore: cast_nullable_to_non_nullable
-                      as String,
+                      as String?,
             messageTimestamp: null == messageTimestamp
                 ? _value.messageTimestamp
                 : messageTimestamp // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$MessageModelImplCopyWith<$Res>
     int id,
     String direction,
     @JsonKey(name: 'message_type') String messageType,
-    @JsonKey(name: 'text_content') String textContent,
+    @JsonKey(name: 'text_content') String? textContent,
     @JsonKey(name: 'message_timestamp') DateTime messageTimestamp,
   });
 }
@@ -140,7 +140,7 @@ class __$$MessageModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? direction = null,
     Object? messageType = null,
-    Object? textContent = null,
+    Object? textContent = freezed,
     Object? messageTimestamp = null,
   }) {
     return _then(
@@ -157,10 +157,10 @@ class __$$MessageModelImplCopyWithImpl<$Res>
             ? _value.messageType
             : messageType // ignore: cast_nullable_to_non_nullable
                   as String,
-        textContent: null == textContent
+        textContent: freezed == textContent
             ? _value.textContent
             : textContent // ignore: cast_nullable_to_non_nullable
-                  as String,
+                  as String?,
         messageTimestamp: null == messageTimestamp
             ? _value.messageTimestamp
             : messageTimestamp // ignore: cast_nullable_to_non_nullable
@@ -193,7 +193,7 @@ class _$MessageModelImpl implements _MessageModel {
   final String messageType;
   @override
   @JsonKey(name: 'text_content')
-  final String textContent;
+  final String? textContent;
   @override
   @JsonKey(name: 'message_timestamp')
   final DateTime messageTimestamp;
@@ -249,7 +249,7 @@ abstract class _MessageModel implements MessageModel {
     required final int id,
     required final String direction,
     @JsonKey(name: 'message_type') required final String messageType,
-    @JsonKey(name: 'text_content') required final String textContent,
+    @JsonKey(name: 'text_content') required final String? textContent,
     @JsonKey(name: 'message_timestamp')
     required final DateTime messageTimestamp,
   }) = _$MessageModelImpl;
@@ -266,7 +266,7 @@ abstract class _MessageModel implements MessageModel {
   String get messageType;
   @override
   @JsonKey(name: 'text_content')
-  String get textContent;
+  String? get textContent;
   @override
   @JsonKey(name: 'message_timestamp')
   DateTime get messageTimestamp;

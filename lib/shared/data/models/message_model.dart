@@ -9,7 +9,7 @@ class MessageModel with _$MessageModel {
     required int id,
     required String direction,
     @JsonKey(name: 'message_type') required String messageType,
-    @JsonKey(name: 'text_content') required String textContent,
+    @JsonKey(name: 'text_content') required String? textContent,
     @JsonKey(name: 'message_timestamp') required DateTime messageTimestamp,
   }) = _MessageModel;
 

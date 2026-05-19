@@ -58,7 +58,7 @@ class ConversationTile extends StatelessWidget {
                   ),
                   const SizedBox(height: AppDimens.spacingXs),
                   Text(
-                    conversation.lastMessage.textContent,
+                    conversation.lastMessage.textContent ?? '',
                     style: AppTextStyles.bodySmall,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
