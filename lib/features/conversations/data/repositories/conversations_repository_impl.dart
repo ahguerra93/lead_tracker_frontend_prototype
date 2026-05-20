@@ -28,6 +28,8 @@ class ConversationsRepositoryImpl implements ConversationsRepository {
               messageType: model.lastMessage.messageType,
               textContent: model.lastMessage.textContent,
               messageTimestamp: model.lastMessage.messageTimestamp,
+              mediaUrl: model.lastMessage.mediaUrl,
+              caption: model.lastMessage.caption,
             ),
           ),
         )

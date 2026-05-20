@@ -29,6 +29,9 @@ mixin _$MessageModel {
   String? get textContent => throw _privateConstructorUsedError;
   @JsonKey(name: 'message_timestamp')
   DateTime get messageTimestamp => throw _privateConstructorUsedError;
+  @JsonKey(name: 'media_url')
+  String? get mediaUrl => throw _privateConstructorUsedError;
+  String? get caption => throw _privateConstructorUsedError;
 
   /// Serializes this MessageModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,6 +56,8 @@ abstract class $MessageModelCopyWith<$Res> {
     @JsonKey(name: 'message_type') String messageType,
     @JsonKey(name: 'text_content') String? textContent,
     @JsonKey(name: 'message_timestamp') DateTime messageTimestamp,
+    @JsonKey(name: 'media_url') String? mediaUrl,
+    String? caption,
   });
 }
 
@@ -76,6 +81,8 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
     Object? messageType = null,
     Object? textContent = freezed,
     Object? messageTimestamp = null,
+    Object? mediaUrl = freezed,
+    Object? caption = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -99,6 +106,14 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
                 ? _value.messageTimestamp
                 : messageTimestamp // ignore: cast_nullable_to_non_nullable
                       as DateTime,
+            mediaUrl: freezed == mediaUrl
+                ? _value.mediaUrl
+                : mediaUrl // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            caption: freezed == caption
+                ? _value.caption
+                : caption // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -120,6 +135,8 @@ abstract class _$$MessageModelImplCopyWith<$Res>
     @JsonKey(name: 'message_type') String messageType,
     @JsonKey(name: 'text_content') String? textContent,
     @JsonKey(name: 'message_timestamp') DateTime messageTimestamp,
+    @JsonKey(name: 'media_url') String? mediaUrl,
+    String? caption,
   });
 }
 
@@ -142,6 +159,8 @@ class __$$MessageModelImplCopyWithImpl<$Res>
     Object? messageType = null,
     Object? textContent = freezed,
     Object? messageTimestamp = null,
+    Object? mediaUrl = freezed,
+    Object? caption = freezed,
   }) {
     return _then(
       _$MessageModelImpl(
@@ -165,6 +184,14 @@ class __$$MessageModelImplCopyWithImpl<$Res>
             ? _value.messageTimestamp
             : messageTimestamp // ignore: cast_nullable_to_non_nullable
                   as DateTime,
+        mediaUrl: freezed == mediaUrl
+            ? _value.mediaUrl
+            : mediaUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        caption: freezed == caption
+            ? _value.caption
+            : caption // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -179,6 +206,8 @@ class _$MessageModelImpl implements _MessageModel {
     @JsonKey(name: 'message_type') required this.messageType,
     @JsonKey(name: 'text_content') required this.textContent,
     @JsonKey(name: 'message_timestamp') required this.messageTimestamp,
+    @JsonKey(name: 'media_url') this.mediaUrl,
+    this.caption,
   });
 
   factory _$MessageModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -197,10 +226,15 @@ class _$MessageModelImpl implements _MessageModel {
   @override
   @JsonKey(name: 'message_timestamp')
   final DateTime messageTimestamp;
+  @override
+  @JsonKey(name: 'media_url')
+  final String? mediaUrl;
+  @override
+  final String? caption;
 
   @override
   String toString() {
-    return 'MessageModel(id: $id, direction: $direction, messageType: $messageType, textContent: $textContent, messageTimestamp: $messageTimestamp)';
+    return 'MessageModel(id: $id, direction: $direction, messageType: $messageType, textContent: $textContent, messageTimestamp: $messageTimestamp, mediaUrl: $mediaUrl, caption: $caption)';
   }
 
   @override
@@ -216,7 +250,10 @@ class _$MessageModelImpl implements _MessageModel {
             (identical(other.textContent, textContent) ||
                 other.textContent == textContent) &&
             (identical(other.messageTimestamp, messageTimestamp) ||
-                other.messageTimestamp == messageTimestamp));
+                other.messageTimestamp == messageTimestamp) &&
+            (identical(other.mediaUrl, mediaUrl) ||
+                other.mediaUrl == mediaUrl) &&
+            (identical(other.caption, caption) || other.caption == caption));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -228,6 +265,8 @@ class _$MessageModelImpl implements _MessageModel {
     messageType,
     textContent,
     messageTimestamp,
+    mediaUrl,
+    caption,
   );
 
   /// Create a copy of MessageModel
@@ -252,6 +291,8 @@ abstract class _MessageModel implements MessageModel {
     @JsonKey(name: 'text_content') required final String? textContent,
     @JsonKey(name: 'message_timestamp')
     required final DateTime messageTimestamp,
+    @JsonKey(name: 'media_url') final String? mediaUrl,
+    final String? caption,
   }) = _$MessageModelImpl;
 
   factory _MessageModel.fromJson(Map<String, dynamic> json) =
@@ -270,6 +311,11 @@ abstract class _MessageModel implements MessageModel {
   @override
   @JsonKey(name: 'message_timestamp')
   DateTime get messageTimestamp;
+  @override
+  @JsonKey(name: 'media_url')
+  String? get mediaUrl;
+  @override
+  String? get caption;
 
   /// Create a copy of MessageModel
   /// with the given fields replaced by the non-null parameter values.
