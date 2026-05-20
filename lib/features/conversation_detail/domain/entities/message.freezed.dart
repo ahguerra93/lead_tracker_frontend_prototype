@@ -22,6 +22,8 @@ mixin _$Message {
   String get messageType => throw _privateConstructorUsedError;
   String? get textContent => throw _privateConstructorUsedError;
   DateTime get messageTimestamp => throw _privateConstructorUsedError;
+  String? get mediaUrl => throw _privateConstructorUsedError;
+  String? get caption => throw _privateConstructorUsedError;
 
   /// Create a copy of Message
   /// with the given fields replaced by the non-null parameter values.
@@ -40,6 +42,8 @@ abstract class $MessageCopyWith<$Res> {
     String messageType,
     String? textContent,
     DateTime messageTimestamp,
+    String? mediaUrl,
+    String? caption,
   });
 }
 
@@ -63,6 +67,8 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
     Object? messageType = null,
     Object? textContent = freezed,
     Object? messageTimestamp = null,
+    Object? mediaUrl = freezed,
+    Object? caption = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -86,6 +92,14 @@ class _$MessageCopyWithImpl<$Res, $Val extends Message>
                 ? _value.messageTimestamp
                 : messageTimestamp // ignore: cast_nullable_to_non_nullable
                       as DateTime,
+            mediaUrl: freezed == mediaUrl
+                ? _value.mediaUrl
+                : mediaUrl // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            caption: freezed == caption
+                ? _value.caption
+                : caption // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -106,6 +120,8 @@ abstract class _$$MessageImplCopyWith<$Res> implements $MessageCopyWith<$Res> {
     String messageType,
     String? textContent,
     DateTime messageTimestamp,
+    String? mediaUrl,
+    String? caption,
   });
 }
 
@@ -128,6 +144,8 @@ class __$$MessageImplCopyWithImpl<$Res>
     Object? messageType = null,
     Object? textContent = freezed,
     Object? messageTimestamp = null,
+    Object? mediaUrl = freezed,
+    Object? caption = freezed,
   }) {
     return _then(
       _$MessageImpl(
@@ -151,6 +169,14 @@ class __$$MessageImplCopyWithImpl<$Res>
             ? _value.messageTimestamp
             : messageTimestamp // ignore: cast_nullable_to_non_nullable
                   as DateTime,
+        mediaUrl: freezed == mediaUrl
+            ? _value.mediaUrl
+            : mediaUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        caption: freezed == caption
+            ? _value.caption
+            : caption // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -165,6 +191,8 @@ class _$MessageImpl extends _Message {
     required this.messageType,
     required this.textContent,
     required this.messageTimestamp,
+    this.mediaUrl,
+    this.caption,
   }) : super._();
 
   @override
@@ -177,10 +205,14 @@ class _$MessageImpl extends _Message {
   final String? textContent;
   @override
   final DateTime messageTimestamp;
+  @override
+  final String? mediaUrl;
+  @override
+  final String? caption;
 
   @override
   String toString() {
-    return 'Message(id: $id, direction: $direction, messageType: $messageType, textContent: $textContent, messageTimestamp: $messageTimestamp)';
+    return 'Message(id: $id, direction: $direction, messageType: $messageType, textContent: $textContent, messageTimestamp: $messageTimestamp, mediaUrl: $mediaUrl, caption: $caption)';
   }
 
   @override
@@ -196,7 +228,10 @@ class _$MessageImpl extends _Message {
             (identical(other.textContent, textContent) ||
                 other.textContent == textContent) &&
             (identical(other.messageTimestamp, messageTimestamp) ||
-                other.messageTimestamp == messageTimestamp));
+                other.messageTimestamp == messageTimestamp) &&
+            (identical(other.mediaUrl, mediaUrl) ||
+                other.mediaUrl == mediaUrl) &&
+            (identical(other.caption, caption) || other.caption == caption));
   }
 
   @override
@@ -207,6 +242,8 @@ class _$MessageImpl extends _Message {
     messageType,
     textContent,
     messageTimestamp,
+    mediaUrl,
+    caption,
   );
 
   /// Create a copy of Message
@@ -225,6 +262,8 @@ abstract class _Message extends Message {
     required final String messageType,
     required final String? textContent,
     required final DateTime messageTimestamp,
+    final String? mediaUrl,
+    final String? caption,
   }) = _$MessageImpl;
   const _Message._() : super._();
 
@@ -238,6 +277,10 @@ abstract class _Message extends Message {
   String? get textContent;
   @override
   DateTime get messageTimestamp;
+  @override
+  String? get mediaUrl;
+  @override
+  String? get caption;
 
   /// Create a copy of Message
   /// with the given fields replaced by the non-null parameter values.

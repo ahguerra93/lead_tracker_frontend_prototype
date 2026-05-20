@@ -13,6 +13,8 @@ _$MessageModelImpl _$$MessageModelImplFromJson(Map<String, dynamic> json) =>
       messageType: json['message_type'] as String,
       textContent: json['text_content'] as String?,
       messageTimestamp: DateTime.parse(json['message_timestamp'] as String),
+      mediaUrl: json['media_url'] as String?,
+      caption: json['caption'] as String?,
     );
 
 Map<String, dynamic> _$$MessageModelImplToJson(_$MessageModelImpl instance) =>
@@ -22,4 +24,6 @@ Map<String, dynamic> _$$MessageModelImplToJson(_$MessageModelImpl instance) =>
       'message_type': instance.messageType,
       'text_content': instance.textContent,
       'message_timestamp': instance.messageTimestamp.toIso8601String(),
+      'media_url': instance.mediaUrl,
+      'caption': instance.caption,
     };

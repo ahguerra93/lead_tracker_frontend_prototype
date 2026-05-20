@@ -10,7 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await dotenv.load(fileName: '.env', isOptional: true);
-  final environmentConfig = EnvironmentConfig.fromSources(dotenvBaseUrl: dotenv.maybeGet('BASE_URL'));
+  final environmentConfig = EnvironmentConfig.fromSources();
 
   initDependencies(environmentConfig: environmentConfig);
   runApp(const App());

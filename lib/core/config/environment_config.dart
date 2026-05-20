@@ -1,20 +1,34 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class EnvironmentConfig {
   final String baseUrl;
+  final String storageUrl;
+  final String bucketName;
 
-  const EnvironmentConfig._({required this.baseUrl});
+  const EnvironmentConfig._({required this.baseUrl, required this.storageUrl, required this.bucketName});
 
-  factory EnvironmentConfig.fromSources({String? dotenvBaseUrl}) {
-    const fromDartDefine = String.fromEnvironment('BASE_URL');
-    final resolvedBaseUrl = _firstNonEmpty([fromDartDefine, dotenvBaseUrl]);
+  factory EnvironmentConfig.fromSources() {
+    const baseUrlKey = 'BASE_URL';
+    const storageUrlKey = 'STORAGE_URL';
+    const bucketNameKey = 'BUCKET_NAME';
+    final baseUrl = _resolve(baseUrlKey, const String.fromEnvironment(baseUrlKey));
+    final storageUrl = _resolve(storageUrlKey, const String.fromEnvironment(storageUrlKey));
+    final bucketName = _resolve(bucketNameKey, const String.fromEnvironment(bucketNameKey));
 
-    if (resolvedBaseUrl == null) {
+    return EnvironmentConfig._(baseUrl: baseUrl, storageUrl: storageUrl, bucketName: bucketName);
+  }
+
+  static String _resolve(String key, String fromDartDefine) {
+    final dotenvValue = dotenv.maybeGet(key);
+    final resolvedValue = _firstNonEmpty([fromDartDefine, dotenvValue]);
+
+    if (resolvedValue == null) {
       throw StateError(
-        'Missing BASE_URL configuration. Provide BASE_URL via --dart-define '
+        'Missing $key configuration. Provide $key via --dart-define '
         'or in the .env file.',
       );
     }
-
-    return EnvironmentConfig._(baseUrl: resolvedBaseUrl);
+    return resolvedValue;
   }
 
   static String? _firstNonEmpty(List<String?> values) {

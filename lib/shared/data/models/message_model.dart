@@ -11,6 +11,8 @@ class MessageModel with _$MessageModel {
     @JsonKey(name: 'message_type') required String messageType,
     @JsonKey(name: 'text_content') required String? textContent,
     @JsonKey(name: 'message_timestamp') required DateTime messageTimestamp,
+    @JsonKey(name: 'media_url') String? mediaUrl,
+    String? caption,
   }) = _MessageModel;
 
   factory MessageModel.fromJson(Map<String, dynamic> json) => _$MessageModelFromJson(json);

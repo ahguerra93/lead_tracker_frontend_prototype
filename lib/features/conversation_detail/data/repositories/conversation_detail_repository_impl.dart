@@ -27,6 +27,8 @@ class ConversationDetailRepositoryImpl implements ConversationDetailRepository {
               messageType: messageModel.messageType,
               textContent: messageModel.textContent,
               messageTimestamp: messageModel.messageTimestamp,
+              mediaUrl: messageModel.mediaUrl,
+              caption: messageModel.caption,
             ),
           )
           .toList(),

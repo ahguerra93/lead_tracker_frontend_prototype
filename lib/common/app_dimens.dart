@@ -32,4 +32,7 @@ abstract final class AppDimens {
   static const double elevationNone = 0.0;
   static const double elevationSm = 1.0;
   static const double elevationMd = 4.0;
+
+  // Chat bubble media thumbnail size
+  static const double mediaThumbnailSize = 180.0;
 }

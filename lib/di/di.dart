@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import '../core/config/environment_config.dart';
 import '../core/network/dio_client.dart';
+import '../core/storage/media_url_builder.dart';
 import '../features/conversations/di/conversations_di.dart';
 import '../features/conversation_detail/di/conversation_detail_di.dart';
 
@@ -14,6 +15,9 @@ void initDependencies({required EnvironmentConfig environmentConfig}) {
 
   // Expose Dio instance for datasources
   getIt.registerSingleton(getIt<DioClient>().dio);
+
+  // Storage
+  getIt.registerSingleton<MediaUrlBuilder>(MediaUrlBuilder(getIt<EnvironmentConfig>()));
 
   // Features
   initConversationsDependencies(getIt);

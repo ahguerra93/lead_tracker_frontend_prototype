@@ -12,8 +12,14 @@ class Message with _$Message {
     required String messageType,
     required String? textContent,
     required DateTime messageTimestamp,
+    String? mediaUrl,
+    String? caption,
   }) = _Message;
 
   bool get isIncoming => direction == 'incoming';
   bool get isOutgoing => direction == 'outgoing';
+  bool get isImage => messageType == 'image';
+  bool get isVideo => messageType == 'video';
+  bool get isDocument => messageType == 'document';
+  bool get isMedia => isImage || isVideo || isDocument;
 }
